@@ -31,8 +31,7 @@ const Login = () => {
       setErrors({});
     }
 
-    // Try logging in via Supabase
-    const { data, error } = await supabase.auth.signInWithPassword({
+    const { error } = await supabase.auth.signInWithPassword({
       email: formData.email,
       password: formData.password,
     });

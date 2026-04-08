@@ -1,8 +1,15 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { AuthContext } from '../context/AuthContext.jsx';
 
 const Account = () => {
   const { userName, userEmail } = useContext(AuthContext);
+  const [profilePic, setProfilePic] = useState('https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=688&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+
+  const handleImageChange = (e) => {
+    if (e.target.files && e.target.files[0]) {
+      setProfilePic(URL.createObjectURL(e.target.files[0]));
+    }
+  };
 
   return (
     <div className="bg-gray-100 min-h-screen flex items-center justify-center">
@@ -12,10 +19,10 @@ const Account = () => {
         </div>
         <div className="p-4">
           <div className="flex items-center mb-4">
-            <div className="relative mr-4">
+            <label htmlFor="profile-upload" className="relative mr-4 cursor-pointer block">
               <img
-                className="w-20 h-20 rounded-full hover:cursor-pointer"
-                src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=880&q=80"
+                className="w-20 h-20 rounded-full object-cover hover:opacity-90 transition-opacity"
+                src={profilePic}
                 alt="User"
               />
               <div className="absolute bottom-0 right-0 bg-purple-600 rounded-full p-1">
@@ -24,7 +31,14 @@ const Account = () => {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 13a3 3 0 11-6 0 3 3 0 016 0z" />
                 </svg>
               </div>
-            </div>
+              <input 
+                type="file" 
+                id="profile-upload" 
+                accept="image/*" 
+                className="hidden" 
+                onChange={handleImageChange} 
+              />
+            </label>
             <div>
               <p className="font-bold">{userName || 'User Name'}</p>
               <p className="text-gray-500">{userEmail || 'user@example.com'}</p>
