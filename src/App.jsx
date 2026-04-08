@@ -4,14 +4,23 @@ import Home from './Pages/Home'
 import Register from './Pages/Register'
 import Login from './Pages/Login'
 import Account from './Pages/Account'
+import ProtectedRoute from './components/ProtectedRoutes'
 
 const App = () => {
   return (
     <Routes>
       <Route path="/" element={<Home />} />
-      <Route path="/register" element={<Register />} />
       <Route path="/login" element={<Login />} />
-      <Route path="/account" element={<Account />} />
+      <Route path="/register" element={<Register />} />
+      {/* Protect the Account */}
+      <Route 
+        path="/account" 
+        element={
+          <ProtectedRoute>
+            <Account />
+          </ProtectedRoute>
+        } 
+      />
     </Routes>
   )
 }

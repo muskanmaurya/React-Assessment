@@ -9,10 +9,10 @@ const Home = () => {
           <h1 className="text-3xl font-bold text-gray-800 mb-2">Welcome to PopX</h1>
           <p className="text-gray-500 mb-8">Lorem ipsum dolor sit amet, consectetur adipiscing elit,</p>
           <Link to="/register">
-            <button className="w-full bg-purple-600 text-white py-3 rounded-md mb-4 font-semibold">Create Account</button>
+            <button className="w-full bg-purple-600 text-white py-3 rounded-md mb-4 font-semibold hover:cursor-pointer hover:bg-purple-700">Create Account</button>
           </Link>
           <Link to="/login">
-            <button className="w-full bg-purple-200 text-purple-600 py-3 rounded-md font-semibold">Already Registered? Login</button>
+            <button className="w-full bg-purple-200 text-purple-700 py-3 rounded-md font-semibold hover:cursor-pointer hover:bg-purple-300">Already Registered? Login</button>
           </Link>
         </div>
       </div>
